@@ -28,6 +28,7 @@ const Feedback = () => {
   };
 
   const names = Object.keys(state);
+  const values = Object.entries(state);
 
   return (
     <div className={styles.FeedbackForm}>
@@ -35,9 +36,7 @@ const Feedback = () => {
       <FeedbackOptions options={names} onLeaveFeedback={addFeedback} />
       <Section title="Statistics" />
       <Statistics
-        good={state.good}
-        neutral={state.neutral}
-        bad={state.bad}
+        values={values}
         total={countTotalFeedback()}
         positive={countPositiveFeedbackPercentage()}
       />

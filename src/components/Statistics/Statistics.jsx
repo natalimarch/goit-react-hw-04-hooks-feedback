@@ -2,23 +2,19 @@ import styles from "./Statistics.module.css";
 import Notification from "./Notification";
 import PropTypes from "prop-types";
 
-const Statistics = ({ good, neutral, bad, total, positive }) => {
+const Statistics = ({ values, total, positive }) => {
+  const Grades = values.map((item, index) => {
+    return (
+      <li key={index}>
+        {item[0]}:<span> {item[1]}</span>
+      </li>
+    );
+  });
   return (
     <>
       {total ? (
         <ul className={styles.FeedbackList}>
-          <li>
-            Good:
-            <span> {good}</span>
-          </li>
-          <li>
-            Neutral:
-            <span> {neutral}</span>
-          </li>
-          <li>
-            Bad:
-            <span> {bad}</span>
-          </li>
+          {Grades}
           <li>
             Total:
             <span> {total}</span>
